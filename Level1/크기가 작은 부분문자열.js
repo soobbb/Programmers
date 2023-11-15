@@ -14,3 +14,4 @@ function solution(t, p) {
 // 예시
 const result = solution("3141592", "271");
 console.log(result); // 출력 결과: 2
+

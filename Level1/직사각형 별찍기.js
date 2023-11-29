@@ -15,3 +15,7 @@ process.stdin.on("data", (data) => {
 
   console.log(result);
 });
+
+console.log(score); // undefined
+var score = 1;
+console.log(score); // 1

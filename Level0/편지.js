@@ -1,5 +1,5 @@
 function solution(message) {
-    var answer;
-    answer = message.length * 2;
-    return answer;
+  return message.length * 2;
 }
+
+console.log(solution("안녕하세요. 만나서 반갑습니다."));

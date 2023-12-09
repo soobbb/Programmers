@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>타이머</title>
+</head>
+<body>
+  <input type="number" id="userTime" placeholder="시간을 입력하세요 (초)" />
+  <button onclick="startTimer()">START</button>
+  <button onclick="stopTimer()">STOP</button>
+  <div id="RemainingTime"></div>
+
+  <script>
+    var time = 0; // 초기값
+    var timerInterval; // ID 저장
+
+    function startTimer() {
+      var userInput = document.getElementById("userTime").value; // 그래서 input에 id를 넣어주는 구나
+      if (userInput !== "") {
+        time = parseInt(userInput);
+        var timerInterval = setInterval(updateTimer, 1000);
+      } else {
+        alert("시간을 입력하세요!");
+      }
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      displayRemainingTime(); // 남은 시간을 표시하는 함수 호출
+    }
+
+    function updateTimer() {
+      var minutes = Math.floor(time / 60);
+      var seconds = time % 60;
+
+      var displayTime = minutes + "분 " + seconds + "초";
+      document.getElementById("RemainingTime").innerHTML = displayTime;
+
+      if (time <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById("RemainingTime").innerHTML = "타이머 종료!";
+      }
+      time--;
+    }
+
+    function displayRemainingTime() {
+      var minutes = Math.floor(time / 60);
+      var seconds = time % 60;
+
+      var displayTime = "남은 시간: " + minutes + "분 " + seconds + "초";
+      document.getElementById("RemainingTime").innerHTML = displayTime;
+    }
+  </script>
+</body>
+</html>

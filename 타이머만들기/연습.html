@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div><span id="remainTime"></span></div>
+    <button id="start" onclick="startTimer()">시작</button>
+<!--
+시간 지정하기 -> 시작 버튼 클릭 시 함수 실행 -> sec-1 -> 화면에 -1 표시 ->
+초가 0인지 확인 -> yes -> 분이 0인지 확인 -> yes -> 타이머 끝
+-> no -> 다시 sec -1 반복             -> no ->1분 줄이고 59초 시작  
+--> 
+    <script>
+      var time = 3;
+      var min;
+      var sec;
+      var timer;
+
+      function startTimer() {
+        timer = setInterval(countTimer, 1000);
+      }
+      function countTimer() {
+        min = Math.floor(time / 60);
+        sec = time % 60;
+
+        document.getElementById("remainTime").innerHTML =
+          min + "분" + sec + "초";
+        time--;
+        if (time < 0) {
+          clearInterval(timer);
+          document.getElementById("remainTime").innerHTML = "종료";
+        }
+      }
+    </script>
+  </body>
+</html>

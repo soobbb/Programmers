@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label><input type="number" id="min" />분</label>
+    <label><input type="number" id="sec" />초</label>
+    <input type="button" value="start" onclick="startTimer()" />
+    <input type="button" value="stop" onclick="stopTimer()" />
+    <div id="remainTime"></div>
+  </body>
+  <script>
+    var min;
+    var sec;
+    var timer;
+
+    function startTimer() {
+      min = document.getElementById("min").value;
+      if (min === "") min = 0;
+      sec = document.getElementById("sec").value;
+      if (sec === "") sec = 0;
+      timer = setInterval(countTimer, 1000);
+    }
+
+    function countTimer() {
+      if (sec !== 0 || min !== 0) {
+        if (sec !== 0) {
+          sec--;
+        } else if (min !== 0) {
+          min--;
+          sec = 59;
+        }
+        document.getElementById("remainTime").innerHTML =
+          min + "분" + sec + "초";
+      } else {
+        clearInterval(timer);
+        document.getElementById("remainTime").innerHTML = "종료";
+      }
+    }
+
+    function stopTimer() {
+      clearInterval(timer);
+      document.getElementById("remainTime").innerHTML = min + "분" + sec + "초";
+    }
+  </script>
+</html>

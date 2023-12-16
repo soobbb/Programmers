@@ -1,14 +1,10 @@
-function solution(emptyBottles) {
-  let totalColas = 0;
-
-  while (emptyBottles >= 2) {
-    let exchangedColas = Math.floor(emptyBottles / 2);
-    totalColas += exchangedColas;
-    emptyBottles = exchangedColas + (emptyBottles % 2);
+function solution(a, b, n) {
+  // 받은 콜라 수
+  let change = 0;
+  // 교환 가능한 수량이 아닐때까지 반복
+  while (n >= a) {
+    change += Math.floor(n / a) * b;
+    n = Math.floor(n / a) * b + (n % a);
   }
-
-  return totalColas;
+  return change;
 }
-
-const result = solution(20);
-console.log(result); // 출력 결과는 19가 나와야 합니다.
